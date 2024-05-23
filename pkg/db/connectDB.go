@@ -10,6 +10,7 @@ import (
 )
 
 func ConnectPGDB(cnf config.Config) *sql.DB {
+	fmt.Println(cnf)
 	postgresURL := fmt.Sprintf("%v://%v:%v@%v:%v/%v?sslmode=%v", cnf.PGDBmsName, cnf.PGPassword, cnf.PGPassword, cnf.PGHost, cnf.PgPort, cnf.PGDBName, cnf.PgSSLMode)
 	db, err := sql.Open(cnf.PgDriverName, postgresURL)
 	if err != nil {
@@ -17,18 +18,18 @@ func ConnectPGDB(cnf config.Config) *sql.DB {
 	}
 
 	/*
-	
-	maxOpenConnections, err := strconv.Atoi(cnf.PgServerMaxOpenConnections)
-	if err != nil {
-		log.Fatal("unable to set max open connections: ", err.Error())
-	}
-	db.SetMaxOpenConns(maxOpenConnections)
 
-	maxIdleConnections, err := strconv.Atoi(cnf.PgServerMaxIdleConnections)
-	if err != nil {
-		log.Fatal("unable to set max idle connections: ", err.Error())
-	}
-	db.SetMaxIdleConns(maxIdleConnections)
+		maxOpenConnections, err := strconv.Atoi(cnf.PgServerMaxOpenConnections)
+		if err != nil {
+			log.Fatal("unable to set max open connections: ", err.Error())
+		}
+		db.SetMaxOpenConns(maxOpenConnections)
+
+		maxIdleConnections, err := strconv.Atoi(cnf.PgServerMaxIdleConnections)
+		if err != nil {
+			log.Fatal("unable to set max idle connections: ", err.Error())
+		}
+		db.SetMaxIdleConns(maxIdleConnections)
 
 	*/
 

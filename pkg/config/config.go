@@ -6,27 +6,28 @@ import (
 )
 
 type Config struct {
-	PGUserName   string `mapstructure:"POSTGRES_USERNAME"`
-	PGPassword   string `mapstructure:"POSTGRES_PASSWORD"`
+	PGUserName   string `mapstructure:"PG_USERNAME"`
+	PGPassword   string `mapstructure:"PG_PASSWORD"`
 	PgSSLMode    string `mapstructure:"PG_SSL_MODE"`
-	PGDBmsName   string `mapstructure:"PG_DBMS"`
-	PGHost       string `mapstructure:"POSTGRES_HOST"`
+	PGDBmsName   string `mapstructure:"PG_DBMS_NAME"`
+	PGHost       string `mapstructure:"PG_HOST"`
 	PgDriverName string `mapstructure:"PG_DRIVER_NAME"`
 	PGDBName     string `mapstructure:"PG_DB_NAME"`
 	PgPort       string `mapstructure:"PG_PORT"`
+
 	Host         string `mapstructure:"HOST"`
 	ServerPort   string `mapstructure:"SERVER_PORT"`
 }
 
 var envs = []string{
-	"POSTGRES_USERNAME", "POSTGRES_PASSWORD", "PG_SSL_MODE", "PG_DBMS", "POSTGRES_HOST",
-	"PG_DRIVER_NAME", "PG_PORT", "HOST", "SERVER_PORT",
+	"PG_USERNAME", "PG_PASSWORD", "PG_SSL_MODE", "PG_DBMS_NAME", "PG_HOST",
+	"PG_DRIVER_NAME","PG_DB_NAME", "PG_PORT", "HOST", "SERVER_PORT",
 }
 
 func LoadConfig() (Config, error) {
 	var config Config
 
-	viper.SetConfigFile("./pkg/config/loadev/.env")
+	viper.SetConfigFile("./pkg/config/.env")
 	viper.ReadInConfig()
 
 	for _, env := range envs {
