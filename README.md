@@ -21,7 +21,7 @@ Each of the above services and their sub modules follow a similar pattern as lis
 
 Along with the services, there are other utilities (folders) as listed below:
 
-- `cmd/api`: This is where the main file resides.
+- `cmd/main.go`: This is where the main file resides.
 - `boot`: Responsible for server setup. This is part of the Gin framework.
 - `clients`: Responsible for interacting with external clients or services.
 - `config`: Where all the necessary project configurations are stored and loaded.
@@ -31,3 +31,9 @@ Along with the services, there are other utilities (folders) as listed below:
 - `jwt`: Manages JWT tokens.
 - `utils`: Contains helper functions.
 - `vendor`: Used for package management.
+
+
+To run the programme 
+
+Use 
+    -`make boot` 
